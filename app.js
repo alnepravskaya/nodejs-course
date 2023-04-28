@@ -1,5 +1,5 @@
 const path = require('path');
-require('dotenv').config({path: __dirname + '/.env' })
+require('dotenv').config({path: __dirname + '/.env'})
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -18,8 +18,8 @@ const {get404} = require("./controllers/error");
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next)=>{
-    User.findById("644a83ddb2f71c68171421c5").then(user=> {
+app.use((req, res, next) => {
+    User.findById("644c0b9cdab6051bcf81f5a3").then(user => {
         req.user = new User(user.name, user.email, user.cart, user._id);
         next();
     }).catch(err => console.log(err))
