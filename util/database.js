@@ -1,11 +1,12 @@
 const mongodb = require('mongodb');
+const {MONGODB_URI} = require("../constants");
 
 const MongoClient = mongodb.MongoClient;
 
 let _db;
 
 const mongoConnect = (callback) => {
-    MongoClient.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.ggqoqr6.mongodb.net/shop?retryWrites=true`)
+    MongoClient.connect(MONGODB_URI)
         .then(client => {
             _db = client.db();
             callback(client);
